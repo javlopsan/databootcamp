@@ -1,7 +1,7 @@
 
 
 import random
-from clases_v4 import *
+from clases_v5 import *
 
 Acoraz_J1=barco(eslora=4,posicion=None,perimetro=None,tipo='Acorazado',vidas=4,estado='OK')
 Fraga1_J1=barco(eslora=3,posicion=None,perimetro=None,tipo='Fragata',vidas=3,estado='OK')

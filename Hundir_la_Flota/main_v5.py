@@ -1,7 +1,7 @@
 
 import random
 import time
-from clases_v4 import *
+from clases_v5 import *
 from HF_Variables import *
 
 print('Bienvenido\n')
