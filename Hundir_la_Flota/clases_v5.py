@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import time
 
 
 class escenario:
@@ -77,7 +78,27 @@ class usuario:
             self.nombre = nombre          
             self.tipo_usuario = tipo_usario
             self.vidas=vidas
-    
+
+        def nivel_dificultad():
+            print('Bien, has decidido jugar tú mismo contra la Máquina.')
+            print('Ahora selecciona el nivel de dificultad 1, 2 ó 3')
+            print('A mayor nivel de dificultad más disparos podrá hacer la Máquina aunque falle.\n')
+            dificultad=['0','1','2','3']
+            choice_dificultad=input()
+            if choice_dificultad=='0':
+                print('No hagas trampas, 0 no es una respuesta')
+                print('Vas a empezar por el nivel 1\n')
+                choice_dificultad=1
+                return choice_dificultad
+            elif choice_dificultad in dificultad:
+                print('Ok, cargando algoritmo...')
+                time.sleep (3)
+                return choice_dificultad
+            else: 
+                print('Sólo los valores 1, 2 y 3 son aceptados, repite por favor.')
+                usuario.nivel_dificultad()
+
+
 
 
 

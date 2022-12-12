@@ -1,7 +1,7 @@
 
 import random
 import time
-from clases_v5 import *
+from clases_v4 import *
 from HF_Variables import *
 
 print('Bienvenido\n')
@@ -29,40 +29,62 @@ escenario.colocar_barco(flota_2, tablero_2D)
 barco.set_barco('J1',flota_1,objetos_j1)
 barco.set_barco('J2',flota_2,objetos_j2)
 
-
+vesus='0'
 
 
 print ('Aquí abajo puedes ver la situación de tu flota\n')
 print(tablero_1D)
 print()
 win=2
-print('Marca 0 si quieres jugar contra la Máquina sino jugará la CPU por ti\n')
+print('Marca 0 si quieres jugar contra la Máquina si no jugará la CPU por ti\n')
 versus=str(input())
 print()
-
+dificultad=1
 if versus=='0':
     turno=random.choice((1,2))
-else: turno=1
+    dificultad=int(usuario.nivel_dificultad())
+
+else:
+    turno=1
    
 if turno==1:
     print('!!!!Rápido!!! apunta y dispara, da el primer golpe\n')
 
 else:
     print('OOOHHH NOOO!!! el adversario dispara primero, preparete\n')
-    k=0
-    while k==0:
+    d=0
+    limitador_rondas_extra=1
+    while d==0:
         xy_random=barco.coord_aleatoria(reg_disparo_2_coord)
         escenario.disparar(xy_random,tablero_2A,tablero_1D,reg_disparo_2,reg_disparo_2_coord,target_2,objetos_j1)
         if reg_disparo_2[-1]=="X":
-            k=0
-            print(f'Impacto!!!{barco.check_hundido(target_2)}volverán a disparar')
-            print('La situación de tu flota es:\n')
-            print(tablero_1D)
-            print()
+            if reg_disparo_2.count("X")==20:
+                d=1
+                print('Impacto!!!, hundieron tu último barco')
+                print('Tus barcos antes de hundirse dispararon... para ganar debes acertras sin fallo 20 veces')
+                print(tablero_1D)
+                print()
+            else:
+                d=0             
+                print(f'Impacto!!!{barco.check_hundido(target_2)}volverán a disparar')
+                print('La situación de tu flota es:\n')
+                print(tablero_1D)
+                print()
+        elif reg_disparo_2[-1]=="K":
+            d=0
         else:
-            k=1
-            print('Fallaron, la situación de tu flota es\n')
-            print(tablero_1D)
+            if limitador_rondas_extra>=dificultad:
+                d=1
+                print('Fallaron, la situación de tu flota es\n')
+                print(tablero_1D)
+                print()
+            else:
+                d=0
+                limitador_rondas_extra+=1
+                print(limitador_rondas_extra)
+                print('Fallaron, la situación de tu flota es\n')
+                print(tablero_1D)
+                print()
 
 v=0
 while v==0:
@@ -98,45 +120,41 @@ while v==0:
             d=1
             print('Ooooohhhh, fallaste, preparate para el ataque enemigo\n')
 
-
-
     if win==0:
         print('!!!!!!!VICTORIA!!!!!!')
         break
-    d=0
-    
+    d=0   
 
-
+    limitador_rondas_extra=1
     while d==0:
-            
-            print('Es el turno de tu adversario, va a disparar')
-            k=0
-            while k==0:
-                xy_random=barco.coord_aleatoria(reg_disparo_2_coord)
-                escenario.disparar(xy_random,tablero_2A,tablero_1D,reg_disparo_2,reg_disparo_2_coord,target_2,objetos_j1)
-
-                if reg_disparo_2[-1]=="X":
-                    if reg_disparo_2.count("X")==20:
-                        k=1
-                        d=1
-                        win=1
-                        print('Impacto!!!, hundieron tu último barco')
-                        print(tablero_1D)
-                        print()
-                    else:
-                        d=0
-                        k=1
-                        
-                        print(f'Impacto!!!{barco.check_hundido(target_2)}volverán a disparar')
-                        print('La situación de tu flota es:\n')
-                        print(tablero_1D)
-                        print()
-                elif reg_disparo_2[-1]=="K":
-                    d=0
-                    k=0
-                else:
+            print('Es el turno de tu adversario, va a disparar\n')
+            xy_random=barco.coord_aleatoria(reg_disparo_2_coord)
+            escenario.disparar(xy_random,tablero_2A,tablero_1D,reg_disparo_2,reg_disparo_2_coord,target_2,objetos_j1)
+            if reg_disparo_2[-1]=="X":
+                if reg_disparo_2.count("X")==20:                    
                     d=1
-                    k=1
+                    win=1
+                    print('Impacto!!!, hundieron tu último barco')
+                    print(tablero_1D)
+                    print()
+                else:
+                    d=0                
+                    print(f'Impacto!!!{barco.check_hundido(target_2)}volverán a disparar')
+                    print('La situación de tu flota es:\n')
+                    print(tablero_1D)
+                    print()
+            elif reg_disparo_2[-1]=="K":
+                d=0
+            else:
+                if limitador_rondas_extra>=dificultad:
+                    d=1
+                    print('Fallaron, la situación de tu flota es\n')
+                    print(tablero_1D)
+                    print()                    
+                else:
+                    limitador_rondas_extra+=1
+                    print(limitador_rondas_extra)                    
+                    d=0
                     print('Fallaron, la situación de tu flota es\n')
                     print(tablero_1D)
                     print()
