@@ -1,6 +1,6 @@
 import random
 import numpy as np
-import time
+import time 
 
 
 class escenario:
