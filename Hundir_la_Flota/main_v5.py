@@ -81,7 +81,6 @@ else:
             else:
                 d=0
                 limitador_rondas_extra+=1
-                print(limitador_rondas_extra)
                 print('Fallaron, la situación de tu flota es\n')
                 print(tablero_1D)
                 print()
@@ -153,7 +152,7 @@ while v==0:
                     print()                    
                 else:
                     limitador_rondas_extra+=1
-                    print(limitador_rondas_extra)                    
+           
                     d=0
                     print('Fallaron, la situación de tu flota es\n')
                     print(tablero_1D)
