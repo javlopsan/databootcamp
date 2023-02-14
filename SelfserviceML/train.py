@@ -260,7 +260,7 @@ grids = {#"gs_reg_log": gs_reg_log,
 for nombre, grid_search in grids.items():
     grid_search.fit(X_train, y_train.values.ravel())
     
-    modelname=str(datetime.now().strftime(nombre+'_'+'%Y%m%d%H%M%S'))
+    modelname=str(datetime.now().strftime('model_'+'%Y%m%d%H%M%S'))
 
 
     with open(modelname, 'wb') as archivo_salida:

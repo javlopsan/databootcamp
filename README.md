@@ -43,6 +43,34 @@
         10) Días restantes: Es una característica derivada que se calcula restando la fecha del viaje por la fecha de reserva.
         11) Precio: La variable objetivo almacena información del precio del billete.
 
+### -SelfserviceML
+
+
+#### -Introducción
+
+        Trabajo dedicado a la cosntrucción de un modelo de ML de prevención del abandono de clientes en el sector Telco 
+
+#### - Dataset
+
+* El dataset de tiene su origen en https://data.world/
+
+* Tiene poco más de 7k reguistros y 21 campos repartidas en tres archivos que uniremos.
+* 21 Variables origignales más las que añadiremos con diversas técnicas y transformaciones
+
+#### - Preprocesamiento de los datos
+
+* Donde verificaremos la calidad de los datos
+* Tomaremos decisiones de imputaciones y transformación de variables
+
+#### - Modelado
+
+* Entrenaremos varios modelos supervisados con diferentes técnicas.
+* Realizaremos una evaluación de los diferentes modelos e iteraciones.
+* Para terminar con la selección e interpretación del modelo final.
+
+#### - Predicción y resultados finales
+
+* Estimación de impacto en el negocio
 
 
 <<<<<<< HEAD

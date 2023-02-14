@@ -49,21 +49,10 @@ def list_features(df):
 
 def transfor(tt,dict1,dict2,dict3):
     ''' tt debe ser el dataframe a tratar
-        t desde indicar "tr" para Train y "te" para test'''
+        dict1,dict2,dict3 serán los diccionarios con los que queremos tratar las variables categóricas'''
     
-    tt.drop(columns='Unnamed: 0', inplace=True)
 
-    '''    dict_MultiLine={
-                'No': 0,
-                'Yes':1,
-                'No phone service': 0
-                }
 
-    dict_ONLServ={
-                'No': 0,
-                'Yes':1,
-                'No internet service': 0
-                }'''
     
     # aplicamos los diccionarios a ciertas variables
 
