@@ -48,7 +48,7 @@
 
 #### -Introducción
 
-        Trabajo dedicado a la cosntrucción de un modelo de ML de prevención del abandono de clientes en el sector Telco 
+        Trabajo dedicado a la construcción de un modelo de ML de prevención del abandono de clientes en el sector Telco 
 
 #### - Dataset
 
