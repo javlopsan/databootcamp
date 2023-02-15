@@ -25,6 +25,14 @@ X_test=pd.read_csv('data\\X_test.csv',index_col='customerID')
 
 predi_model=loaded_model.predict(X_test)
 
-prediname=str(datetime.now().strftime('predi_model'+'_'+'%Y%m%d%H%M%S'))
+prediname=str(datetime.now().strftime('data\\predi_model'+'_'+'%Y%m%d%H%M%S'+'.csv'))
 
-predi_model.tofile(prediname, sep = ',') 
+# predi_model.tofile(prediname, sep = ',') 
+
+import csv
+
+with open(prediname, 'w', newline='') as student_file:
+    writer = csv.writer(student_file)
+    writer.writerow(predi_model)
+
+
